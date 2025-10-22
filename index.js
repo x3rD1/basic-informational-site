@@ -2,31 +2,23 @@ const http = require("http");
 const fs = require("fs");
 const { error } = require("console");
 
+const pathUrl = {
+  "/": "./routes/index.html",
+  "/about": "./routes/about.html",
+  "/contact-me": "./routes/contact-me.html",
+  "/404": "./routes/404.html",
+};
 const server = http.createServer((req, res) => {
-  let path = "./routes/";
-  switch (req.url) {
-    case "/":
-      path += "index.html";
-      break;
-    case "/about":
-      path += "about.html";
-      break;
-    case "/contact-me":
-      path += "contact-me.html";
-      break;
-    default:
-      path += "404.html";
-      break;
-  }
-  console.log(req.url);
-  fs.readFile(path, (err, data) => {
+  const filePath = pathUrl[req.url] || "./routes/404.html";
+
+  fs.readFile(filePath, (err, data) => {
     if (err) {
-      res.writeHead(404, { "content-type": "text/html" });
-      res.end();
-      console.log(err);
+      res.writeHead(500, { "content-type": "text/html" });
+      return res.end("Internal Server Error");
     }
 
-    res.writeHead(200, { "content-type": "text/html" });
+    const statusCode = filePath.includes("404") ? 404 : 200;
+    res.writeHead(statusCode, { "content-type": "text/html" });
     res.end(data);
   });
 });
