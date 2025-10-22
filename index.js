@@ -1,3 +1,4 @@
+import "dotenv/config";
 import http from "http";
 import fs from "fs/promises";
 import path from "path";
@@ -27,4 +28,5 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(8080);
+const PORT = process.env.PORT;
+server.listen(PORT);

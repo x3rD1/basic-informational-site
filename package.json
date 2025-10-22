@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/x3rD1/basic-informational-site/issues"
   },
-  "homepage": "https://github.com/x3rD1/basic-informational-site#readme"
+  "homepage": "https://github.com/x3rD1/basic-informational-site#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
 }
