@@ -29,4 +29,4 @@ const server = http.createServer(async (req, res) => {
 });
 
 const PORT = process.env.PORT;
-server.listen(PORT);
+server.listen(PORT || 3000);
