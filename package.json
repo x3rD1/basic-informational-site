@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/x3rD1/basic-informational-site#readme",
   "dependencies": {
-    "dotenv": "^17.2.3"
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0"
   }
 }
