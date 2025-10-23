@@ -8,9 +8,17 @@ const app = express();
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(
-  express.static(path.join(__dirname, "routes"), { extensions: ["html"] })
-);
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "routes", "index.html"));
+});
+
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(__dirname, "routes", "about.html"));
+});
+
+app.get("/contact-me", (req, res) => {
+  res.sendFile(path.join(__dirname, "routes", "contact-me.html"));
+});
 
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, "routes", "404.html"));
